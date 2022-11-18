@@ -6,14 +6,13 @@ import {
   renderTemplate,
 
 } from "./utils.js"
-
-import { load } from "./pages/cars/cars.js"
-import { load as loadV2 } from "./pages/cars-bootstrap/cars.js"
+import {load} from "./pages/cars/cars.js";
+import {start} from "./pages/pagination/pagination.js";
 
 window.addEventListener("load", async () => {
   const templateHome = await loadHtml("./pages/home/home.html")
   const templateCars = await loadHtml("./pages/cars/cars.html")
-  const templateCarsBootstrap = await loadHtml("./pages/cars-bootstrap/cars.html")
+  const templatePaginationCars = await loadHtml("./pages/pagination/pagination.html")
 
   const router = new Navigo("/", { hash: true });
   window.router = router
@@ -28,14 +27,15 @@ window.addEventListener("load", async () => {
     })
     .on({
       "/": () => renderTemplate(templateHome, "content"),
-      "/cars": (match) => {
+      "/cars": () => {
         renderTemplate(templateCars, "content")
-        load(1, match)
+        load()
       },
-      "/cars-v2": (match) => {
-        renderTemplate(templateCarsBootstrap, "content")
-        loadV2(1, match)
+      "/pagination": () => {
+        renderTemplate(templatePaginationCars, "content")
+        start(0)
       }
+
     })
     .notFound(() => renderTemplate("No page for this route found", "content"))
     .resolve()
