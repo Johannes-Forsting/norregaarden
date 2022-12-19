@@ -1,0 +1,47 @@
+<div class="template" style="margin-top: 50px">
+    <div class="table-responsive">
+        <table id="main-table" class="table table-bordered border-info">
+            <thead class="table-dark">
+            <tr>
+                <th>Delivery-Date</th>
+                <th>From Warehouse</th>
+                <th>Destination</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+        <h1 id="van-header"></h1>
+        <div id="van" style="display: flex; flex-direction: row">
+            <select id="van-select">
+
+            </select>
+            <button class="btn btn-primary" id="submit-van">Choose Van</button>
+        </div>
+        <h1>This delivery contains the following products:</h1>
+        <div>
+            <p id="total-price"></p>
+            <p id="total-weight"></p>
+        </div>
+        <table id="secondary-table" class="table table-bordered border-info">
+            <thead class="table-light">
+            <tr>
+                <th>Product name</th>
+                <th>Product Price</th>
+                <th>Product weight</th>
+                <th>Quantity</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody id="secondary-tbody">
+            </tbody>
+
+        </table>
+
+        <select id="select-products">
+
+        </select>
+        <input type="number" id="input-quantity">
+        <button class="btn btn-primary" id="submit-new-order">Add To Delivery</button>
+    </div>
+</div>

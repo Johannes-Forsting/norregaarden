@@ -1,0 +1,30 @@
+<div class="template" style="margin-top: 50px">
+    <div style="display: flex; flex-direction: row">
+        <input class="form-control" style="width: 30%" type="text" placeholder="search name" id="filter-name">
+        <button class="btn btn-primary" id="submit-search">Search product</button>
+        <button class="btn btn-primary" id="see-all">See all products</button>
+    </div>
+    <div class="table-responsive">
+        <table id="main-table" class="table table-bordered border-info">
+            <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Weight</th>
+                <th>Show product</th>
+                <th>Delete</th>
+
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: space-between">
+        <input class="form-control" type="text" placeholder="name" id="input-name">
+        <input class="form-control" type="number" placeholder="price" id="input-price">
+        <input class="form-control" type="number" placeholder="weight in grams" id="input-weight">
+        <button class="btn btn-primary" style="width:400px" id="submit-product">Add Product</button>
+    </div>
+</div>
