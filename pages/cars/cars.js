@@ -1,4 +1,4 @@
-const SERVER_URL = "http://localhost:8080/api/cars/pageable"
+const SERVER_URL = "http://localhost:8080/api/cars"
 
 import { paginator } from "../../lib/paginator/paginate-bootstrap.js"
 import { sanitizeStringWithTableRows } from "../../utils.js"
