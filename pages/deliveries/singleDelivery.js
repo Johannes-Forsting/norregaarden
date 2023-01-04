@@ -1,7 +1,4 @@
-const SERVER_URL_DELIVERIES = "http://localhost:8080/api/deliveries"
-const SERVER_URL_PRODUCT_ORDERS = "http://localhost:8080/api/product-orders"
-const SERVER_URL_PRODUCT = "http://localhost:8080/api/products"
-const SERVER_URL_VANS = "http://localhost:8080/api/vans"
+import {URL_PRODUCTS, URL_DELIVERIES, URL_VANS, URL_PRODUCT_ORDERS} from "/settings.js"
 
 import { sanitizeStringWithTableRows } from "../../utils.js"
 let id
@@ -9,8 +6,10 @@ let totalPrice = 0
 let totalWeight = 0
 let productOrders = []
 let vans = []
+let router
 
-export async function initDelivery(match) {
+export async function initDelivery(match, navigoRouter) {
+    router = navigoRouter
     document.getElementById("van").style.display = "none"
     document.getElementById("van-header").innerText = ""
 
@@ -43,7 +42,7 @@ export async function initDelivery(match) {
 async function getDelivery(id){
     let delivery
     try {
-        delivery = await fetch(SERVER_URL_DELIVERIES + "/" + id)
+        delivery = await fetch(URL_DELIVERIES + "/" + id)
             .then(res => res.json())
     } catch (e) {
         console.error(e)
@@ -72,7 +71,7 @@ async function getDelivery(id){
 
 async function getProductOrders(){
     try {
-        productOrders = await fetch(SERVER_URL_PRODUCT_ORDERS + "/by-delivery-id/" + id)
+        productOrders = await fetch(URL_PRODUCT_ORDERS + "/by-delivery-id/" + id)
 
             .then(res => res.json())
     } catch (e) {
@@ -110,7 +109,7 @@ function calculateWeightAndPrice(){
 
 async function getOptions(){
     try {
-        const options = await fetch(SERVER_URL_PRODUCT).then(res => res.json())
+        const options = await fetch(URL_PRODUCTS).then(res => res.json())
 
         const optionsArray = options.map(
             product =>
@@ -132,9 +131,8 @@ async function deleteProductOrder(id){
             method: "DELETE",
             headers: {"Accept": "application/json"}
         };
-        console.log(SERVER_URL_PRODUCT_ORDERS + "/" + id)
         try{
-        const response = await fetch(SERVER_URL_PRODUCT_ORDERS + "/" + id, options).then((res) => res.json())
+        const response = await fetch(URL_PRODUCT_ORDERS + "/" + id, options).then((res) => res.json())
             productOrders = productOrders.filter(productOrder => productOrder.id !== response.id);
         }
         catch (e){
@@ -166,7 +164,7 @@ async function addProductOrder(){
         body: JSON.stringify(newProductOrder)
     };
 
-    const response = await fetch(SERVER_URL_PRODUCT_ORDERS, options)
+    const response = await fetch(URL_PRODUCT_ORDERS, options)
         .then((res) => res.json()).then()
 
     productOrders.push(response)
@@ -176,7 +174,7 @@ async function addProductOrder(){
 
 async function getVans(){
     try {
-        vans = await fetch(SERVER_URL_VANS).then(res => res.json())
+        vans = await fetch(URL_VANS).then(res => res.json())
 
         const optionsArray = vans.map(
             van =>
@@ -200,7 +198,7 @@ async function checkVanCapacity(){
         if(vans[i].id == vanId){
             console.log("Van found")
             if(vans[i].capacity > totalWeight){
-                await addVan()
+                await addVan(vanId)
             }else alert("Van cannot carry this heavy of a delivery")
         }
     }
@@ -220,10 +218,13 @@ async function addVan(vanId){
         body: JSON.stringify(updatedDelivery)
     }
     try {
-        await fetch(SERVER_URL_DELIVERIES, options)
+        console.log(updatedDelivery)
+        await fetch(URL_DELIVERIES, options)
+        router.navigate(`deliveries`)
     }catch (e){
         console.log(e.error)
     }
+
 
 }
 

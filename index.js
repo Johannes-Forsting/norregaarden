@@ -46,7 +46,7 @@ window.addEventListener("load", async () => {
       },
       "/single-delivery": (match) => {
         renderTemplate(templateSingleDelivery, "content")
-        initDelivery(match)
+        initDelivery(match, router)
       }
 
     })

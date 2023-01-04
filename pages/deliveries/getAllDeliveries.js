@@ -1,4 +1,4 @@
-const SERVER_URL = "http://localhost:8080/api/deliveries"
+import {URL_DELIVERIES} from "/settings.js"
 
 import { sanitizeStringWithTableRows } from "../../utils.js"
 
@@ -15,7 +15,7 @@ export async function initAllDeliveries() {
         let id = element.target.id
         console.log(id)
         if (id.includes("-delete")) {
-            deleteProduct(id.split('-delete')[0])
+            deleteDelivery(id.split('-delete')[0])
         }
         if (id.includes("-see")) {
             router.navigate(`single-delivery?id=${id.split('-see')[0]}`)
@@ -26,7 +26,7 @@ export async function initAllDeliveries() {
 async function getDeliveries(){
 
     try {
-        deliveries = await fetch(SERVER_URL)
+        deliveries = await fetch(URL_DELIVERIES)
             .then(res => res.json())
     } catch (e) {
         console.error(e)
@@ -55,7 +55,6 @@ async function addDelivery(){
     const deliveryDate = document.getElementById("input-delivery-date").value
     const fromWarehouse = document.getElementById("input-from-warehouse").value
     const destination = document.getElementById("input-destination").value
-    const vanId = 1
 
 
     if(deliveryDate !== "" || fromWarehouse !== "" || destination !== ""){
@@ -74,7 +73,7 @@ async function addDelivery(){
             body: JSON.stringify(newDelivery)
         };
         try{
-            const response = await fetch(SERVER_URL, options)
+            const response = await fetch(URL_DELIVERIES, options)
                 .then((res) => res.json())
             deliveries.push(response)
             showDeliveries()
@@ -86,7 +85,7 @@ async function addDelivery(){
 
 }
 
-async function deleteProduct(id){
+async function deleteDelivery(id){
     var confirming = confirm("If you delete this delivery all productOrders containing this delivery will be deleted. Confirm?");
     if (confirming === true)
     {
@@ -95,7 +94,7 @@ async function deleteProduct(id){
             headers: {"Accept": "application/json"}
         };
         try {
-            const response = await fetch(SERVER_URL + "/" + id, options).then((res) => res.json())
+            const response = await fetch(v + "/" + id, options).then((res) => res.json())
             deliveries = deliveries.filter(delivery => delivery.id !== response.id);
         }catch (e){
             console.log(e.error)

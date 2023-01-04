@@ -1,15 +1,12 @@
-const SERVER_URL = "http://localhost:8080/api/products"
+import {URL_PRODUCTS} from "/settings.js"
 
-import { sanitizeStringWithTableRows } from "../../utils.js"
 let id
+let product
+let name
+let price
+let weight
 
 export async function initProduct(match) {
-    document.getElementById("status").innerText = ""
-    document.getElementById("status-count").innerText = ""
-    document.getElementById("input-name").innerText = ""
-    document.getElementById("input-price").innerText = ""
-    document.getElementById("input-weight").innerText = ""
-
     if (match?.params?.id) {
         id = match.params.id
         try {
@@ -28,14 +25,22 @@ export async function initProduct(match) {
 }
 
 async function getProduct(id){
+    document.getElementById("status").innerText = ""
+    document.getElementById("status-count").innerText = ""
+    document.getElementById("input-name").value = ""
+    document.getElementById("input-price").value = ""
+    document.getElementById("input-weight").value = ""
     let product
     try {
-        product = await fetch(SERVER_URL + "/" + id)
+        product = await fetch(URL_PRODUCTS + "/" + id)
             .then(res => res.json())
     } catch (e) {
         console.error(e)
     }
     console.log(product)
+    name = product.name
+    price = product.price
+    weight = product.weight
     document.getElementById("input-name").placeholder = product.name
     document.getElementById("input-price").placeholder = product.price + ",-"
     document.getElementById("input-weight").placeholder = product.weight + "g"
@@ -43,16 +48,9 @@ async function getProduct(id){
 }
 
 async function change(){
-    const name =  document.getElementById("input-name").value
-    const price =  document.getElementById("input-price").value
-    const weight =  document.getElementById("input-weight").value
 
-    const updatedProduct = {
-        id: id,
-        name: name,
-        price: price,
-        weight: weight
-    };
+    const updatedProduct = getUpdatedProduct()
+    console.log(updatedProduct)
     const options = {
         method: "PUT",
         headers: {
@@ -62,7 +60,7 @@ async function change(){
         body: JSON.stringify(updatedProduct)
     };
     try {
-        await fetch(SERVER_URL, options)
+        await fetch(URL_PRODUCTS, options)
         document.getElementById("status").innerHTML = "Product with id: "+id+" was successfully updated. You will be redirected in: "
         document.getElementById("status-count").innerText = "3 seconds"
         setTimeout( () =>{
@@ -78,9 +76,32 @@ async function change(){
         console.log(e)
         document.getElementById("status").innerHTML = "An error occurred while trying to edit delivery with id: "+id;
     }
+}
 
 
+function getUpdatedProduct(){
+    const newName =  document.getElementById("input-name").value
+    const newPrice =  document.getElementById("input-price").value
+    const newWeight =  document.getElementById("input-weight").value
 
+    if(newName !== ""){
+        name = newName
+    }
+    if(newPrice !== ""){
+        price = newPrice
+    }
+    if(newWeight !== ""){
+        weight = newWeight
+    }
+
+    const updatedProduct = {
+        id,
+        name,
+        price,
+        weight
+    };
+
+    return updatedProduct
 
 }
 

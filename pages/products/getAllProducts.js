@@ -1,4 +1,4 @@
-const SERVER_URL = "http://localhost:8080/api/products"
+import {URL_PRODUCTS} from "/settings.js"
 
 import { sanitizeStringWithTableRows } from "../../utils.js"
 
@@ -33,7 +33,7 @@ export async function initAllProducts(navigoRouter) {
 async function showProducts(){
     document.getElementById("tbody").innerHTML = ""
     try {
-        products = await fetch(SERVER_URL)
+        products = await fetch(URL_PRODUCTS)
             .then(res => res.json())
         console.log(products)
     } catch (e) {
@@ -47,7 +47,7 @@ async function showFiltered(){
     const filter = document.getElementById("filter-name").value
     document.getElementById("tbody").innerHTML = ""
     try {
-        products = await fetch(SERVER_URL)
+        products = await fetch(URL_PRODUCTS)
             .then(res => res.json())
         console.log(products)
     } catch (e) {
@@ -93,7 +93,7 @@ async function addProduct(){
         body: JSON.stringify(newProduct)
     };
 
-    const response = await fetch(SERVER_URL, options)
+    const response = await fetch(URL_PRODUCTS, options)
         .then((res) => res.json())
     //window.location.reload();
     if(response.ok){
@@ -103,14 +103,14 @@ async function addProduct(){
 }
 
 async function deleteProduct(id){
-    var confirming = confirm("If you delete this product all productOrders containging this product will be deleted. Confirm?");
+    var confirming = confirm("If you delete this product all productOrders containing this product will be deleted. Confirm?");
     if (confirming === true)
     {
         const options = {
             method: "DELETE",
             headers: {"Accept": "application/json"}
         };
-        const response = await fetch(SERVER_URL + "/" + id, options).then((res) => res.json())
+        const response = await fetch(URL_PRODUCTS + "/" + id, options).then((res) => res.json())
         if(response.ok){
             products = products.filter(product => product.id !== response.id);
         }
