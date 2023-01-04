@@ -94,7 +94,7 @@ async function deleteDelivery(id){
             headers: {"Accept": "application/json"}
         };
         try {
-            const response = await fetch(v + "/" + id, options).then((res) => res.json())
+            const response = await fetch(URL_DELIVERIES + "/" + id, options).then((res) => res.json())
             deliveries = deliveries.filter(delivery => delivery.id !== response.id);
         }catch (e){
             console.log(e.error)

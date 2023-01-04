@@ -6,10 +6,9 @@ let totalPrice = 0
 let totalWeight = 0
 let productOrders = []
 let vans = []
-let router
 
-export async function initDelivery(match, navigoRouter) {
-    router = navigoRouter
+export async function initDelivery(match) {
+
     document.getElementById("van").style.display = "none"
     document.getElementById("van-header").innerText = ""
 

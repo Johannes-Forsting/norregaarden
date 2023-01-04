@@ -3,9 +3,9 @@ import {URL_PRODUCTS} from "/settings.js"
 import { sanitizeStringWithTableRows } from "../../utils.js"
 
 let products = []
-let router
-export async function initAllProducts(navigoRouter) {
-    router = navigoRouter
+
+export async function initAllProducts() {
+
     await showProducts()
     document.getElementById("submit-product").onclick = () =>{
         addProduct();
