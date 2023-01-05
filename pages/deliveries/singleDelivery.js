@@ -163,7 +163,7 @@ async function addProductOrder(){
         body: JSON.stringify(newProductOrder)
     };
 
-    const response = await fetch(URL_PRODUCT_ORDERS, options)
+    const response = fetch(URL_PRODUCT_ORDERS, options)
         .then((res) => res.json()).then()
 
     productOrders.push(response)
