@@ -6,20 +6,13 @@ import {
   renderTemplate,
 } from "./utils.js"
 
-import {initAllProducts} from "./pages/products/getAllProducts.js";
-import {initProduct} from "./pages/products/singleProduct.js";
 
-import {initAllDeliveries} from "./pages/deliveries/getAllDeliveries.js";
-import {initDelivery} from "./pages/deliveries/singleDelivery.js";
 
 window.addEventListener("load", async () => {
   const templateHome = await loadHtml("./pages/home/home.html")
-
-  const templateAllProducts = await loadHtml("./pages/products/get-all-products.html")
-  const templateSingleProduct = await loadHtml("./pages/products/single-product.html")
-
-  const templateAllDeliveries = await loadHtml("./pages/deliveries/get-all-deliveries.html")
-  const templateSingleDelivery = await loadHtml("./pages/deliveries/single-delivery.html")
+  const templatePictures = await loadHtml("./pages/pictures/pictures.html")
+  const templateCalendar= await loadHtml("./pages/calendar/calendar.html")
+  const templateActivities= await loadHtml("./pages/activities/activities.html")
 
   const router = new Navigo("/", { hash: true });
   window.router = router
@@ -34,22 +27,9 @@ window.addEventListener("load", async () => {
     })
     .on({
       "/": () => renderTemplate(templateHome, "content"),
-      "/products": () => {
-        renderTemplate(templateAllProducts, "content")
-        initAllProducts()
-      },
-      "/deliveries": () => {
-        renderTemplate(templateAllDeliveries, "content")
-        initAllDeliveries()
-      },
-      "/single-product": (match) => {
-        renderTemplate(templateSingleProduct, "content")
-        initProduct(match)
-      },
-      "/single-delivery": (match) => {
-        renderTemplate(templateSingleDelivery, "content")
-        initDelivery(match)
-      }
+      "/pictures": () => renderTemplate(templatePictures, "content"),
+      "/calendar": () => renderTemplate(templateCalendar, "content"),
+      "/activities": () => renderTemplate(templateActivities, "content"),
 
     })
     .notFound(() => renderTemplate("No page for this route found", "content"))
