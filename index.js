@@ -6,7 +6,7 @@ import {
   renderTemplate,
 } from "./utils.js"
 
-
+import {initAllBookings} from "./pages/calendar/calendar.js";
 
 window.addEventListener("load", async () => {
   const templateHome = await loadHtml("./pages/home/home.html")
@@ -28,9 +28,11 @@ window.addEventListener("load", async () => {
     .on({
       "/": () => renderTemplate(templateHome, "content"),
       "/pictures": () => renderTemplate(templatePictures, "content"),
-      "/calendar": () => renderTemplate(templateCalendar, "content"),
       "/activities": () => renderTemplate(templateActivities, "content"),
-
+      "/calendar": () => {
+        renderTemplate(templateCalendar, "content")
+        initAllBookings()
+      },
     })
     .notFound(() => renderTemplate("No page for this route found", "content"))
     .resolve()
