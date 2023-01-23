@@ -1,5 +1,4 @@
-const URL = "http://localhost:8080"
 
-export let URL_BOOKINGS = URL + "/api/booking"
 
+export let URL_API = "https://sheetdb.io/api/v1/by7ovhqdn7bwh"
 

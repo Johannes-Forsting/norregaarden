@@ -8,6 +8,7 @@ import {
 
 import {initAllBookings} from "./pages/calendar/calendar.js";
 
+
 window.addEventListener("load", async () => {
   const templateHome = await loadHtml("./pages/home/home.html")
   const templatePictures = await loadHtml("./pages/pictures/pictures.html")
@@ -16,6 +17,7 @@ window.addEventListener("load", async () => {
 
   const router = new Navigo("/", { hash: true });
   window.router = router
+
 
   adjustForMissingHash()
   router
@@ -26,7 +28,8 @@ window.addEventListener("load", async () => {
       }
     })
     .on({
-      "/": () => renderTemplate(templateHome, "content"),
+      "/": () => renderTemplate(templateHome, "content")
+      ,
       "/pictures": () => renderTemplate(templatePictures, "content"),
       "/activities": () => renderTemplate(templateActivities, "content"),
       "/calendar": () => {

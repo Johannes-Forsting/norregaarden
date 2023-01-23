@@ -1,13 +1,10 @@
-import {URL_BOOKINGS} from "/settings.js"
-
-const URL_API = "https://sheetdb.io/api/v1/by7ovhqdn7bwh"
+import {URL_API} from "/settings.js"
 
 import { sanitizeStringWithTableRows } from "../../utils.js"
 
 let bookings = []
 
 export async function initAllBookings() {
-
     await getBookings()
 
     document.getElementById("main-table").onclick = (element) => {
@@ -21,6 +18,7 @@ export async function initAllBookings() {
     document.getElementById("submit-booking").onclick = () =>{
         addBooking()
     }
+
 
 }
 
