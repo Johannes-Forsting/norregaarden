@@ -5,6 +5,7 @@ import { sanitizeStringWithTableRows } from "../../utils.js"
 let bookings = []
 
 export async function initAllBookings() {
+
     await getBookings()
 
     document.getElementById("main-table").onclick = (element) => {
@@ -71,7 +72,7 @@ function postBookings(listOfBookings, month){
         <td>${booking.name}</td>
         <td>${booking.startDate}</td>
         <td>${booking.days}</td>
-        <td><button class="btn btn-primary" id="${booking.startDate}-delete">Slet</button></td>
+        <td><button class="btn btn-warning" id="${booking.id}-delete">Slet</button></td>
       `).join("")
     document.getElementById("tbody-" + month).innerHTML = sanitizeStringWithTableRows(rows)
 }
@@ -85,7 +86,7 @@ function postBookings(listOfBookings, month){
 
 
 async function deleteBooking(id){
-    const URL_ENDING = "/startDate/" + id
+    const URL_ENDING = "/id/" + id
     var confirming = confirm("Er du sikker?");
     if (confirming === true)
     {
@@ -103,8 +104,10 @@ async function addBooking(){
     const name = document.getElementById("input-name").value
     const startDate = document.getElementById("input-date").value
     const days = document.getElementById("input-days").value
+    const id = getNextId()
     if(name !== "" && startDate !== "" && days !== ""){
         const newBooking = {
+            id,
             name,
             startDate,
             days
@@ -127,6 +130,13 @@ async function addBooking(){
             console.log(e.error)
         }
     }
+}
+
+function getNextId(){
+
+    const value = Math.max(...bookings.map(booking => booking.id))
+    console.log(value)
+    return value + 1
 }
 
 

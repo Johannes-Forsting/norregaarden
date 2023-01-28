@@ -1,10 +1,12 @@
-<div class="template" style="margin-top: 50px">
-    <div class="column" id="main-table">
+<div class="template" style="margin-top: 40px">
+    <p style="text-align:center; font-size: 40px; font-weight: bold">Oversigt over brugsret</p>
+
+    <div class="column; test"  id="main-table">
 
         <h2>Marts</h2>
         <div class="table-responsive">
-            <table class="table table-bordered border-info">
-                <thead class="table-dark">
+            <table class="table table-bordered" style="border-color: black">
+                <thead style="background-color: #801818; color: white">
                 <tr>
                     <th>Booking Navn</th>
                     <th>Ankomst dato</th>
@@ -19,8 +21,8 @@
 
         <h2>April</h2>
         <div class="table-responsive">
-            <table class="table table-bordered border-info">
-                <thead class="table-dark">
+            <table class="table table-bordered" style="border-color: black">
+                <thead style="background-color: #801818; color: white">
                 <tr>
                     <th>Booking Navn</th>
                     <th>Ankomst dato</th>
@@ -35,15 +37,15 @@
 
         <h2>Maj</h2>
         <div class="table-responsive">
-            <table class="table table-bordered border-info">
-                <thead class="table-dark">
+            <table class="table table-bordered" style="border-color: black">
+                <thead style="background-color: #801818; color: white">
                 <tr>
                     <th>Booking Navn</th>
                     <th>Ankomst dato</th>
                     <th>Antal nætter</th>
                     <th>Slet Booking</th>
                 </tr>
-                </thead>
+                <thead style="background-color: #801818; color: white">
                 <tbody id="tbody-may">
                 </tbody>
             </table>
@@ -51,8 +53,8 @@
 
         <h2>Juni</h2>
         <div class="table-responsive">
-            <table class="table table-bordered border-info">
-                <thead class="table-dark">
+            <table class="table table-bordered" style="border-color: black">
+                <thead style="background-color: #801818; color: white">
                 <tr>
                     <th>Booking Navn</th>
                     <th>Ankomst dato</th>
@@ -67,8 +69,8 @@
 
         <h2>Juli</h2>
         <div class="table-responsive">
-            <table class="table table-bordered border-info">
-                <thead class="table-dark">
+            <table class="table table-bordered" style="border-color: black">
+                <thead style="background-color: #801818; color: white">
                 <tr>
                     <th>Booking Navn</th>
                     <th>Ankomst dato</th>
@@ -83,8 +85,8 @@
 
         <h2>August</h2>
         <div class="table-responsive">
-            <table class="table table-bordered border-info">
-                <thead class="table-dark">
+            <table class="table table-bordered" style="border-color: black">
+                <thead style="background-color: #801818; color: white">
                 <tr>
                     <th>Booking Navn</th>
                     <th>Ankomst dato</th>
@@ -99,8 +101,8 @@
 
         <h2>September</h2>
         <div class="table-responsive">
-            <table class="table table-bordered border-info">
-                <thead class="table-dark">
+            <table class="table table-bordered" style="border-color: black">
+                <thead style="background-color: #801818; color: white">
                 <tr>
                     <th>Booking Navn</th>
                     <th>Ankomst dato</th>
@@ -115,8 +117,8 @@
 
         <h2>Oktober</h2>
         <div class="table-responsive">
-            <table class="table table-bordered border-info">
-                <thead class="table-dark">
+            <table class="table table-bordered" style="border-color: black">
+                <thead style="background-color: #801818; color: white">
                 <tr>
                     <th>Booking Navn</th>
                     <th>Ankomst dato</th>
@@ -131,8 +133,8 @@
 
         <h2>November</h2>
         <div class="table-responsive">
-            <table class="table table-bordered border-info">
-                <thead class="table-dark">
+            <table class="table table-bordered" style="border-color: black">
+                <thead style="background-color: #801818; color: white">
                 <tr>
                     <th>Booking Navn</th>
                     <th>Ankomst dato</th>
@@ -159,21 +161,22 @@
 
 
 
-        <div style="display: flex; flex-direction: row; justify-content: space-between">
-            <select class="form-control" id="input-name">
-                <option value="Olderne" selected>Olderne</option>
-                <option value="Karen">Karen</option>
-                <option value="Vibeke">Vibeke</option>
-                <option value="Rane">Rane</option>
-                <option value="Eske">Eske</option>
-                <option value="Tore">Tore</option>
-                <option value="Adam">Adam</option>
-                <option value="Johannes">Johannes</option>
-            </select>
-            <input class="form-control" type="date" id="input-date" min="2023-03-01" max="2023-11-30">
-            <input class="form-control" type="number" placeholder="Antal Nætter" id="input-days">
-            <button class="btn btn-primary" style="width:400px" id="submit-booking">Tilføj Booking</button>
-        </div>
+
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: space-between">
+        <select class="form-control; add-booking" id="input-name">
+            <option value="Olderne" selected>Olderne</option>
+            <option value="Karen">Karen</option>
+            <option value="Vibeke">Vibeke</option>
+            <option value="Rane">Rane</option>
+            <option value="Eske">Eske</option>
+            <option value="Tore">Tore</option>
+            <option value="Adam">Adam</option>
+            <option value="Johannes">Johannes</option>
+        </select>
+        <input class="form-control" type="date" id="input-date" min="2023-03-01" max="2023-11-30">
+        <input class="form-control" type="number" placeholder="Antal Nætter" id="input-days">
+        <button class="button-33" style="width:400px" id="submit-booking">Tilføj Booking</button>
     </div>
 </div>
 
