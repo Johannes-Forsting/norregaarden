@@ -42,8 +42,8 @@ function getPics(){
 
 function getPicArray(size){
     let arr = []
-    arr.push(getRandomInt(11, 14))
-    arr.push(getRandomInt(15, 18))
+    arr.push(getRandomInt(16, 22))
+    arr.push(getRandomInt(23, 30))
     while (arr.length <size){
         let number = getRandomInt(1, 10)
         if(!arr.includes(number)){

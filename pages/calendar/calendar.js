@@ -43,6 +43,15 @@ function sortBookings(items){
         return dateA - dateB
     });
 
+    const months = ["march", "april", "may", "june", "july", "august", "september", "october", "november"]
+
+    const monthNumbers = ["03", "04", "05", "06","07", "08","09","10", "11",]
+    for (let i = 0; i < months.length; i++) {
+        let currentBookings = items.filter(booking => booking.startDate.split("-")[1].includes(monthNumbers[i]));
+        postBookings(currentBookings, months[i])
+    }
+
+    /*
     let marBookings = items.filter(booking => booking.startDate.split("-")[1].includes("03"));
     let aprBookings = items.filter(booking => booking.startDate.split("-")[1].includes("04"));
     let mayBookings = items.filter(booking => booking.startDate.split("-")[1].includes("05"));
@@ -63,6 +72,8 @@ function sortBookings(items){
     postBookings(octBookings, "october")
     postBookings(novBookings, "november")
 
+     */
+
 }
 
 function postBookings(listOfBookings, month){
@@ -70,7 +81,7 @@ function postBookings(listOfBookings, month){
     const rows = listOfBookings.map(booking => `
       <tr>
         <td>${booking.name}</td>
-        <td>${booking.startDate}</td>
+        <td>${booking.startDate.split('-').reverse().join('-')}</td>
         <td>${booking.days}</td>
         <td><button class="btn btn-warning" id="${booking.id}-delete">Slet</button></td>
       `).join("")
