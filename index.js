@@ -18,6 +18,7 @@ window.addEventListener("load", async () => {
   const templateAccess= await loadHtml("./pages/calendar/get-access.html")
   const templateActivities= await loadHtml("./pages/activities/activities.html")
   const templateAbout= await loadHtml("./pages/about/about.html")
+  const templateGuides= await loadHtml("./pages/guides/guides.html")
 
   const router = new Navigo("/", { hash: true });
   window.router = router
@@ -37,6 +38,7 @@ window.addEventListener("load", async () => {
       "/about": () => renderTemplate(templateAbout, "content"),
       "/pictures": () => renderTemplate(templatePictures, "content"),
       "/activities": () => renderTemplate(templateActivities, "content"),
+      "/guides": () => renderTemplate(templateGuides, "content"),
       "/calendar": () => {
         renderTemplate(templateCalendar, "content")
         initAllBookings()

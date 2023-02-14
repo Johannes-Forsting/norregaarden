@@ -51,29 +51,6 @@ function sortBookings(items){
         postBookings(currentBookings, months[i])
     }
 
-    /*
-    let marBookings = items.filter(booking => booking.startDate.split("-")[1].includes("03"));
-    let aprBookings = items.filter(booking => booking.startDate.split("-")[1].includes("04"));
-    let mayBookings = items.filter(booking => booking.startDate.split("-")[1].includes("05"));
-    let junBookings = items.filter(booking => booking.startDate.split("-")[1].includes("06"));
-    let julBookings = items.filter(booking => booking.startDate.split("-")[1].includes("07"));
-    let augBookings = items.filter(booking => booking.startDate.split("-")[1].includes("08"));
-    let sepBookings = items.filter(booking => booking.startDate.split("-")[1].includes("09"));
-    let octBookings = items.filter(booking => booking.startDate.split("-")[1].includes("10"));
-    let novBookings = items.filter(booking => booking.startDate.split("-")[1].includes("11"));
-
-    postBookings(marBookings, "march")
-    postBookings(aprBookings, "april")
-    postBookings(mayBookings, "may")
-    postBookings(junBookings, "june")
-    postBookings(julBookings, "july")
-    postBookings(augBookings, "august")
-    postBookings(sepBookings, "september")
-    postBookings(octBookings, "october")
-    postBookings(novBookings, "november")
-
-     */
-
 }
 
 function postBookings(listOfBookings, month){
