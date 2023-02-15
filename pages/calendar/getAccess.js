@@ -1,4 +1,7 @@
 let clickedPics = []
+const picLength = 6;
+const lastForsting = 15;
+const lastPic = 35;
 
 export async function initAccess(){
     clickedPics = []
@@ -9,7 +12,7 @@ export async function initAccess(){
             router.navigate("calendar")
         }
         else{
-            document.getElementById("access-text").innerText = "Adgang nægtet! Vælg kun de personer med Forsting i deres navn."
+            document.getElementById("access-text").innerText = "Adgang nægtet! Prøv igen!"
             console.log("Access not granted")
         }
     }
@@ -27,7 +30,6 @@ export async function initAccess(){
     getPics()
 }
 function getPics(){
-    const picLength = 6
     let pictures = getPicArray(picLength)
     pictures.sort(() => Math.random() - 0.5);
 
@@ -37,15 +39,18 @@ function getPics(){
             <img id="${pic}" src="${"media/access/" + pic + ".jpg"}" alt="" class="img-img" />
         </div>
     `).join("")
+
     document.getElementById("verification-pictures").innerHTML = picsToShow
 }
 
 function getPicArray(size){
     let arr = []
-    arr.push(getRandomInt(16, 22))
-    arr.push(getRandomInt(23, 30))
+    const middle = Math.ceil(lastPic - (lastForsting / 2))
+    console.log(middle)
+    arr.push(getRandomInt(lastForsting + 1, middle))
+    arr.push(getRandomInt(middle + 1, lastPic))
     while (arr.length <size){
-        let number = getRandomInt(1, 10)
+        let number = getRandomInt(1, lastForsting)
         if(!arr.includes(number)){
             arr.push(number)
         }
@@ -62,11 +67,11 @@ function getRandomInt(min, max) {
 
 function checkAccess(){
     let hasAccess = true
-    if(clickedPics.length !== 4){
+    if(clickedPics.length !== picLength - 2){
         return false
     }
     for (let i = 0; i < clickedPics.length; i++) {
-        if(parseInt(clickedPics[i]) > 10){
+        if(parseInt(clickedPics[i]) > lastForsting){
             hasAccess = false
         }
     }
