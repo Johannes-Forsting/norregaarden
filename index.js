@@ -7,8 +7,8 @@ import {
 } from "./utils.js"
 
 import {initAllBookings} from "./pages/calendar/calendar.js";
-//import {init} from "./pages/calendar/access.js";
 import {initAccess} from "./pages/calendar/getAccess.js";
+import {initAccess2} from "./pages/calendar/getAccess2.js";
 
 
 window.addEventListener("load", async () => {
@@ -16,6 +16,7 @@ window.addEventListener("load", async () => {
   const templatePictures = await loadHtml("./pages/pictures/pictures.html")
   const templateCalendar= await loadHtml("./pages/calendar/calendar.html")
   const templateAccess= await loadHtml("./pages/calendar/get-access.html")
+  const templateAccess2= await loadHtml("./pages/calendar/get-access-2.html")
   const templateActivities= await loadHtml("./pages/activities/activities.html")
   const templateAbout= await loadHtml("./pages/about/about.html")
   const templateGuides= await loadHtml("./pages/guides/guides.html")
@@ -47,6 +48,10 @@ window.addEventListener("load", async () => {
       "/get-access": () => {
         renderTemplate(templateAccess, "content")
         initAccess()
+      },
+      "/get-access-2": () => {
+        renderTemplate(templateAccess2, "content")
+        initAccess2()
       },
 
     })
