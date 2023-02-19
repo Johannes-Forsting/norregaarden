@@ -155,28 +155,30 @@
 
 
 
-
-
-
-
-
-
-
     </div>
     <div style="display: flex; flex-direction: row; justify-content: space-between">
-        <select class="form-control; add-booking" id="input-name">
-            <option value="Olderne" selected>Olderne</option>
-            <option value="Karen">Karen</option>
-            <option value="Vibeke">Vibeke</option>
-            <option value="Rane">Rane</option>
-            <option value="Eske">Eske</option>
-            <option value="Tore">Tore</option>
-            <option value="Adam">Adam</option>
-            <option value="Johannes">Johannes</option>
-        </select>
-        <input class="form-control" type="date" id="input-date" min="2023-03-01" max="2023-11-30" >
-        <input class="form-control" type="number" placeholder="Antal Nætter" id="input-days">
-        <button class="button-33" style="width:400px" id="submit-booking">Tilføj Booking</button>
+        <div>
+            <h2>Booking navn</h2>
+            <select class="form-control; add-booking" id="input-name">
+                <option value="Olderne" selected>Olderne</option>
+                <option value="Karen">Karen</option>
+                <option value="Vibeke">Vibeke</option>
+                <option value="Rane">Rane</option>
+                <option value="Eske">Eske</option>
+                <option value="Tore">Tore</option>
+                <option value="Adam">Adam</option>
+                <option value="Johannes">Johannes</option>
+            </select>
+        </div>
+        <div>
+            <h2>Ankomst dato</h2>
+            <input class="form-control" type="date" id="input-date" min="2023-03-01" max="2023-11-30" >
+        </div>
+        <div>
+            <h2>Antal nætter</h2>
+            <input class="form-control" type="number" placeholder="Antal Nætter" id="input-days">
+        </div>
+            <button class="button-33" style="width:400px" id="submit-booking">Tilføj Booking</button>
     </div>
 </div>
 
