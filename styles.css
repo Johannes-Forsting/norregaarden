@@ -20,7 +20,7 @@ body {
 .main{
     width:100%;
     height:100vh;
-    background:url("media/billeder/Huset1.jpg");
+    background:url("media/billeder/huset1.jpg");
     background-size: cover;
     display: flex;
     justify-content: center;
